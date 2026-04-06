@@ -1,0 +1,5 @@
+-- Update Users table nếu cần, tránh duplicate khi bảng đã được mở rộng
+ALTER TABLE Users ADD COLUMN IF NOT EXISTS phone VARCHAR(20) AFTER email;
+ALTER TABLE Users ADD COLUMN IF NOT EXISTS birthday DATE AFTER phone;
+ALTER TABLE Users ADD COLUMN IF NOT EXISTS address VARCHAR(255) AFTER birthday;
+ALTER TABLE Users ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP AFTER address;
